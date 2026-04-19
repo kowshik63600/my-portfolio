@@ -52,7 +52,7 @@ function Projects() {
              <p>Built with React & Framer Motion.</p>
              <div className="project-buttons">
                 <a href="#" rel="noreferrer">Live</a>
-                <a href="https://github.com/kowshik63600/protofolio" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://kowshik63600.github.io/my-portfolio/" target="_blank" rel="noreferrer">GitHub</a>
              </div>
           </div>
         </div>
