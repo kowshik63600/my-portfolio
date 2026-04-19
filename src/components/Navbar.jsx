@@ -39,8 +39,8 @@ const toggleTheme = () => {
   const navLinks = [
     { name: "Home", id: "home" },
     { name: "About", id: "about" },
-    { name: "Skills", id: "skills" },
     { name: "Projects", id: "projects" },
+     { name: "Skills", id: "skills" },
     { name: "Contact", id: "contact" },
   ];
 
