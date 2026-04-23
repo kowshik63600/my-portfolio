@@ -1,32 +1,33 @@
-body,
-a,
-button {
-    cursor: none;
-}
-
 .cursor-dot {
-    width: 6px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     background: #38bdf8;
-    border-radius: 4px;
+    border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 10000;
     transform: translate(-50%, -50%);
-    transition: all 0.05s linear;
-    box-shadow: 0 0 8px #38bdf8;
+    transition: transform 0.08s ease, opacity 0.2s ease;
+    mix-blend-mode: difference;
 }
 
 
-/* Hide on mobile */
+/* Keep same cursor on hover */
+
+.cursor-hover {
+    width: 20px;
+    height: 20px;
+    background: #38bdf8;
+    opacity: 1;
+}
 
 @media (max-width: 768px) {
     .cursor-dot {
         display: none;
     }
-    body,
-    a,
-    button {
-        cursor: auto;
-    }
+}
+
+.custom-cursor,
+.cursor-dot {
+    pointer-events: none;
 }
