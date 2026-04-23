@@ -3,16 +3,25 @@ import "./CustomCursor.css";
 
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const moveCursor = (e) => {
-      setPosition({
-        x: e.clientX,
-        y: e.clientY
-      });
+      setPosition({ x: e.clientX, y: e.clientY });
     };
 
+    const handleHover = () => setHovered(true);
+    const handleUnhover = () => setHovered(false);
+
     window.addEventListener("mousemove", moveCursor);
+
+    /* Removed button and a */
+    const targets = document.querySelectorAll(".project-card, .skill-card");
+
+    targets.forEach((t) => {
+      t.addEventListener("mouseenter", handleHover);
+      t.addEventListener("mouseleave", handleUnhover);
+    });
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
@@ -21,12 +30,12 @@ function CustomCursor() {
 
   return (
     <div
-      className="cursor-dot"
+      className={`cursor-dot ${hovered ? "cursor-hover" : ""}`}
       style={{
         left: `${position.x}px`,
-        top: `${position.y}px`
+        top: `${position.y}px`,
       }}
-    ></div>
+    />
   );
 }
 
