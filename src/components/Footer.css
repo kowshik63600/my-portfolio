@@ -1,10 +1,13 @@
 .footer {
-    padding: 60px 20px 30px;
+    width: 100%;
+    padding: 60px 20px 40px;
     background: #020617;
     display: flex;
     justify-content: center;
     align-items: center;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 5;
 }
 
 .footer-content {
@@ -18,9 +21,11 @@
 
 .social-dock {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
     background: rgba(255, 255, 255, 0.03);
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
@@ -36,27 +41,26 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.3s ease;
 }
 
 .dock-icon:hover {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.08);
     color: var(--hover-color);
-    transform: translateY(-8px) scale(1.15);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-6px);
 }
 
 .footer-divider {
-    width: 40px;
+    width: 60px;
     height: 2px;
     background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-    opacity: 0.5;
 }
 
 .copyright {
     color: #64748b;
     font-size: 14px;
-    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .copyright span {
@@ -65,15 +69,23 @@
 }
 
 
-/* Mobile Adjustments */
+/* MOBILE */
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 15px 90px;
+    }
     .social-dock {
-        gap: 8px;
+        border-radius: 20px;
+        padding: 12px;
+        gap: 10px;
     }
     .dock-icon {
         width: 38px;
         height: 38px;
         font-size: 18px;
+    }
+    .copyright {
+        font-size: 13px;
     }
 }
