@@ -8,7 +8,7 @@ function Auth({ onClose }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const ADMIN_EMAIL = "yourname.dev@gmail.com"; // 🔥 change this
+  const ADMIN_EMAIL = "kowshik6360@gmail.com";
 
   const handleLogin = async (e) => {
     e.preventDefault();
