@@ -81,3 +81,57 @@
         font-size: 0.85rem;
     }
 }
+
+.login-btn {
+    background: transparent;
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.nav-btn {
+    padding: 6px 16px;
+    border-radius: 10px;
+    border: 1px solid #38bdf8;
+    background: transparent;
+    color: #38bdf8;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* hover = premium */
+
+.nav-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.nav-btn::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 60%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.nav-btn:hover::after {
+    opacity: 1;
+}

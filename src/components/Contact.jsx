@@ -8,26 +8,42 @@ function Contact() {
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   const sendEmail = (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_0wcjfbn",
-        "template_lnre8gd",
-        form.current,
-        "kNKfhJfsW8_yU8yDT"
-      )
-      .then(() => {
-        setLoading(false);
-        showToast("Message Sent Successfully!", "success");
-        form.current.reset();
-      })
-      .catch(() => {
-        setLoading(false);
-        showToast("Failed to send message.", "error");
-      });
-  };
+  const name = form.current.user_name.value.trim();
+  const email = form.current.user_email.value.trim();
+  const message = form.current.message.value.trim();
+
+  if (!name || !email || !message) {
+    showToast("Please fill all fields", "error");
+    return;
+  }
+
+  if (!/\S+@\S+\.\S+/.test(email)) {
+    showToast("Enter valid email", "error");
+    return;
+  }
+
+  setLoading(true);
+
+  emailjs
+    .sendForm(
+      "service_0wcjfbn",
+      "template_lnre8gd",
+      form.current,
+      "kNKfhJfsW8_yU8yDT"
+    )
+    .then(() => {
+      showToast("Message Sent Successfully!", "success");
+      form.current.reset();
+    })
+    .catch(() => {
+      showToast("Failed to send message.", "error");
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+};
 
   const showToast = (msg, type) => {
     setToast({ show: true, message: msg, type: type });
@@ -69,9 +85,9 @@ function Contact() {
             <input type="text" name="user_name" placeholder="Your Name" required />
             <input type="email" name="user_email" placeholder="Your Email" required />
             <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">
-              {loading ? "Sending..." : "Send Message"}
-            </button>
+           <button type="submit" disabled={loading}>
+  {loading ? "Sending..." : "Send Message"}
+</button>
           </form>
         </div>
       </div>

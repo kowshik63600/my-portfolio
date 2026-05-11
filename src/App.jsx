@@ -10,18 +10,23 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop/BackToTop";
 import CursorGlow from "./components/CursorGlow";
-import CustomCursor from "./components/CustomCursor"
+import CustomCursor from "./components/CustomCursor";
 import PreLoader from "./components/PreLoader";
+import Github from "./assets/components/Github";
+import Timeline from "./assets/components/Timeline";
+import Auth from "./components/Auth";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setLoaded(true);
-  }, 700);
+  // Loader
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 700);
+    return () => clearTimeout(timer);
+  }, []);
 
-  return () => clearTimeout(timer);
-}, []);
+  // Scroll Reveal
   useEffect(() => {
     ScrollReveal().reveal(
       ".hero, .about, .projects, .skills, .contact, .footer",
@@ -31,44 +36,38 @@ useEffect(() => {
         easing: "ease",
         interval: 200,
         origin: "bottom",
-        reset: false,
       }
     );
   }, []);
-// import CustomCursor from "./components/CustomCursor"; 
 
-function App() {
-  return (
-    <div className="App">
-      {/* <CustomCursor /> */}
-      <Navbar />
-      <Hero />
-      {/* ...rest of components */}
-    </div>
-  );
-}
   return (
     <>
-    {!loaded && (
-  <div className="loader-screen">
-    <h1 className="loader-logo">KOWSHIK</h1>
-    <p className="loader-text">Loading Portfolio...</p>
-  </div>
-)}
-    <div className={loaded ? "page-show" : "page-hide"}></div>
-    <div className="particles"></div>
-    <div className="bg-orbs"></div>
-    <PreLoader />
-    <CustomCursor />
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
-      <BackToTop />
-      <CursorGlow />
+      {!loaded && (
+        <div className="loader-screen">
+          <h1 className="loader-logo">KOWSHIK</h1>
+          <p className="loader-text">Loading Portfolio...</p>
+        </div>
+      )}
+
+      <div className={loaded ? "page-show" : "page-hide"}>
+        <PreLoader />
+        <CustomCursor />
+        <Navbar onLoginClick={() => setShowAuth(true)} />
+
+        <Hero />
+        <About />
+        <Projects />
+        <Timeline />
+        <Skills />
+        <Github />
+        <Contact />
+        <Footer />
+        <BackToTop />
+        <CursorGlow />
+      </div>
+
+      {/* ✅ Auth Modal */}
+      {showAuth && <Auth onClose={() => setShowAuth(false)} />}
     </>
   );
 }

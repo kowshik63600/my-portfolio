@@ -24,6 +24,16 @@ function Hero() {
     }, 120);
     return () => clearTimeout(timer);
   }, [charIndex, index]);
+  const handleMouseMove = (e) => {
+  const btn = e.currentTarget;
+  const rect = btn.getBoundingClientRect();
+
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  btn.style.setProperty("--x", `${x}px`);
+  btn.style.setProperty("--y", `${y}px`);
+};
 
  return (
   <section className="hero section-mask" id="home">
@@ -36,14 +46,34 @@ function Hero() {
         <h2>
           I'm a <span>{text}<span className="cursor">|</span></span>
         </h2>
-        <p>I build modern, responsive and user-friendly websites using React.</p>
+        <p>I build responsive web apps using React, Firebase, and modern UI practices.</p>
         
         <div className="hero-buttons">
-          <a href="mailto:kowshik70223@gmail.com"><button>Let's Work</button></a>
-          <a href="#projects"><button className="outline">Projects</button></a>
-<a href={`${import.meta.env.BASE_URL}resume.pdf`} download>
-  <button className="resume-btn">Resume</button>
-</a>        </div>
+<a 
+  href="#contact" 
+  className="btn"
+  onMouseMove={(e) => handleMouseMove(e)}
+>
+  Hire Me
+</a>
+
+<a 
+  href="#projects" 
+  className="btn"
+  onMouseMove={(e) => handleMouseMove(e)}
+>
+  Projects
+</a>
+
+<a 
+  href="/kowshik-resume.pdf" 
+  download 
+  className="btn"
+  onMouseMove={(e) => handleMouseMove(e)}
+>
+  Download Resume
+</a>
+     </div>
       </div>
     </div>
 

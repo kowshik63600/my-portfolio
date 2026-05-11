@@ -49,7 +49,16 @@ function Projects() {
           
           <div className="card-content">
              <h3>Modern Portfolio</h3>
-             <p>Built with React & Framer Motion.</p>
+<ul className="project-features">
+  <li>• Fully responsive UI with animations</li>
+  <li>• EmailJS contact integration</li>
+  <li>• Smooth scroll & interactive design</li>
+</ul>
+<div className="badges">
+  <span>React</span>
+  <span>CSS</span>
+  <span>EmailJS</span>
+</div>
              <div className="project-buttons">
                 <a href="#" rel="noreferrer">Live</a>
                 <a href="https://kowshik63600.github.io/my-portfolio/" target="_blank" rel="noreferrer">GitHub</a>
@@ -75,8 +84,18 @@ function Projects() {
 
           <div className="card-content">
              <h3>Expense Tracker</h3>
-             <p>Full-stack financial management app.</p>
-             <div className="project-buttons">
+<ul className="project-features">
+  <li>• Add & delete transactions</li>
+  <li>• Real-time data handling</li>
+  <li>• Clean UI with charts</li>
+  <li>• Helps users track daily expenses and manage finances efficiently.</li>
+</ul>        
+<div className="badges">
+  <span>React</span>
+  <span>Firebase</span>
+  <span>Chart.js</span>
+</div>
+     <div className="project-buttons">
                 <a href="https://expense-tracker-kowshik.netlify.app/" target="_blank" rel="noreferrer">Live</a>
                 <a href="#" rel="noreferrer">GitHub</a>
              </div>

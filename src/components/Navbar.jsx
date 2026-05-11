@@ -1,38 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 
-const Navbar = () => {
-    const [theme, setTheme] = useState('dark');
-
-const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-};
+function Navbar({ onLoginClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Step 91: Intersection Observer Logic
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: "-30% 0px -70% 0px", // Triggers highlight when section is in upper-mid view
-      threshold: 0,
-    };
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-30% 0px -70% 0px",
+      }
+    );
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
   }, []);
 
@@ -40,24 +29,24 @@ const toggleTheme = () => {
     { name: "Home", id: "home" },
     { name: "About", id: "about" },
     { name: "Projects", id: "projects" },
-     { name: "Skills", id: "skills" },
+    { name: "Skills", id: "skills" },
     { name: "Contact", id: "contact" },
   ];
 
   return (
     <nav className="navbar">
-  <div className="logo">
-    <span className="logo-icon">K</span>
-    <span className="logo-text">OWSHIK</span>
-  </div>
+      <div className="logo">
+        <span className="logo-icon">K</span>
+        <span className="logo-text">OWSHIK</span>
+      </div>
+
       <div
-        className={`menu-icon ${isMenuOpen ? "open" : ""}`} 
+        className={`menu-icon ${isMenuOpen ? "open" : ""}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <div className="bar"></div>
       </div>
 
-      {/* Nav Links */}
       <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
         {navLinks.map((link) => (
           <li key={link.id}>
@@ -70,9 +59,16 @@ const toggleTheme = () => {
             </a>
           </li>
         ))}
+
+        {/* ✅ FIXED LOGIN BUTTON */}
+        <li>
+          <button onClick={onLoginClick} className="nav-btn">
+  Login
+</button>
+        </li>
       </ul>
     </nav>
   );
-};
+}
 
 export default Navbar;
