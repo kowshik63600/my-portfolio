@@ -88,7 +88,7 @@ function Projects() {
   <li>• Add & delete transactions</li>
   <li>• Real-time data handling</li>
   <li>• Clean UI with charts</li>
-  <li>• Helps users track daily expenses and manage finances efficiently.</li>
+  <li>•Helps users track daily expenses and manage finances efficiently.</li>
 </ul>        
 <div className="badges">
   <span>React</span>

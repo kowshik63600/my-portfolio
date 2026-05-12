@@ -1,0 +1,30 @@
+.why {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.why-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.why-card {
+    background: #0f172a;
+    padding: 25px;
+    border-radius: 14px;
+    width: 280px;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+}
+
+.why-card h3 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}

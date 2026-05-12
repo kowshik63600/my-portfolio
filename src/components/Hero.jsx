@@ -33,6 +33,15 @@ function Hero() {
 
   btn.style.setProperty("--x", `${x}px`);
   btn.style.setProperty("--y", `${y}px`);
+
+  const moveX = (x - rect.width / 2) * 0.2;
+  const moveY = (y - rect.height / 2) * 0.2;
+
+  btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.03)`;
+};
+
+const handleMouseLeave = (e) => {
+  e.currentTarget.style.transform = "translate(0,0) scale(1)";
 };
 
  return (
@@ -46,9 +55,33 @@ function Hero() {
         <h2>
           I'm a <span>{text}<span className="cursor">|</span></span>
         </h2>
-        <p>I build responsive web apps using React, Firebase, and modern UI practices.</p>
-        
-        <div className="hero-buttons">
+<p>
+  Frontend Developer specializing in React, Firebase, and modern UI design.
+  I build fast, responsive, and production-ready web applications.
+</p>
+<p className="tech-stack">
+  React • JavaScript • Firebase • HTML • CSS • Git
+</p>        
+
+{/* ✅ ADD HERE */}
+<div className="hero-stats">
+  <div>
+    <h3>3+</h3>
+    <p>Projects Built</p>
+  </div>
+
+  <div>
+    <h3>React</h3>
+    <p>Core Skill</p>
+  </div>
+
+  <div>
+    <h3>Firebase</h3>
+    <p>Backend</p>
+  </div>
+</div>
+
+<div className="hero-buttons">
 <a 
   href="#contact" 
   className="btn"
@@ -73,16 +106,29 @@ function Hero() {
 >
   Download Resume
 </a>
+<a 
+  href="https://github.com/kowshik63600" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="btn"
+  onMouseMove={(e) => handleMouseMove(e)}
+>
+  GitHub
+</a>
+
      </div>
       </div>
     </div>
+    
 
     {/* Right Column Wrapper */}
     <div className="hero-right reveal-right">
       <div className="image-container">
         <img src={profile} alt="Kowshik" fetchPriority="high" />
       </div>
+      
     </div>
+    
   </section>
 );
 }

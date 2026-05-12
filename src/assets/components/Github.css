@@ -1,73 +1,104 @@
 .github {
-    padding: 120px 8%;
     text-align: center;
-    background: linear-gradient(180deg, #020617, #0f172a);
+    padding: 80px 20px;
 }
 
-.github-title {
-    font-size: 40px;
-    margin-bottom: 50px;
+.section-title {
+    font-size: 36px;
+    margin-bottom: 40px;
 }
 
-.github-title span {
+.section-title span {
     color: #38bdf8;
 }
 
+
+/* layout */
+
 .github-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
     gap: 30px;
+    flex-wrap: wrap;
 }
 
-.github-container img {
-    width: 420px;
-    max-width: 100%;
-    border-radius: 14px;
+
+/* cards */
+
+.github-card {
+    background: #0f172a;
+    border-radius: 16px;
+    padding: 25px;
+    width: 300px;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.1);
     transition: 0.3s;
 }
 
-.github-container img:hover {
-    transform: scale(1.05);
+.github-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);
 }
 
-.github {
-    padding: 120px 8%;
-    text-align: center;
+
+/* stats */
+
+.stats-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
 }
 
-.github-container {
+.stats-card li {
+    margin: 10px 0;
+    text-align: left;
+}
+
+
+/* streak */
+
+.streak-box {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.github-container img {
-    width: 420px;
-    max-width: 100%;
-    border-radius: 14px;
-    transition: 0.4s ease;
-}
-
-.github-container img:hover {
-    transform: translateY(-6px) scale(1.03);
-}
-
-.github-btn-wrapper {
+    justify-content: space-between;
     margin-top: 20px;
 }
 
-.github-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+.streak-box div {
+    text-align: center;
 }
 
-.github-container img {
-    width: 350px;
-    max-width: 100%;
-    border-radius: 12px;
+.streak-box h3 {
+    color: #38bdf8;
+}
+
+
+/* button */
+
+.github-btn-wrap {
+    margin-top: 40px;
+}
+
+.github-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.github-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+
+/* responsive */
+
+@media (max-width: 768px) {
+    .github-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

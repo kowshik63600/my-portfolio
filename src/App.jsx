@@ -15,6 +15,7 @@ import PreLoader from "./components/PreLoader";
 import Github from "./assets/components/Github";
 import Timeline from "./assets/components/Timeline";
 import Auth from "./components/Auth";
+import WhyHireMe from "./components/WhyHireMe";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,22 @@ function App() {
       }
     );
   }, []);
+  useEffect(() => {
+  const elements = document.querySelectorAll(".reveal-on-scroll");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}, []);
 
   return (
     <>
@@ -57,6 +74,7 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <WhyHireMe />
         <Timeline />
         <Skills />
         <Github />

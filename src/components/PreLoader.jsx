@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./PreLoader.css";
 
 function PreLoader() {
   const [visible, setVisible] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(() => setVisible(false), 800); // Wait for fade animation to finish
-    }, 2000); // Show for 2 seconds
+      setVisible(false);
+    }, 1500); // faster
 
     return () => clearTimeout(timer);
   }, []);
@@ -17,10 +15,13 @@ function PreLoader() {
   if (!visible) return null;
 
   return (
-    <div className={`preloader ${fadeOut ? "fade-out" : ""}`}>
+    <div className="preloader">
       <div className="loader-content">
+
         <h1 className="loader-logo">KOWSHIK</h1>
-        <div className="loader-bar"></div>
+
+        <div className="loader-line"></div>
+
       </div>
     </div>
   );

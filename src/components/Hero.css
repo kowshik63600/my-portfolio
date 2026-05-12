@@ -633,18 +633,56 @@
 }
 
 .btn {
-    padding: 12px 22px;
-    border-radius: 12px;
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    background: rgba(255, 255, 255, 0.03);
-    color: #38bdf8;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
     position: relative;
+    padding: 10px 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    color: #38bdf8;
+    background: transparent;
+    cursor: pointer;
     overflow: hidden;
-    /* Smooth feel */
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 0.35s ease;
+    backdrop-filter: blur(6px);
+}
+
+
+/* Glow background */
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 60%);
+    transition: width 0.4s ease, height 0.4s ease;
+    overflow: hidden;
+}
+
+
+/* Expand ripple */
+
+.btn:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+
+/* Lift + glow */
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.25), 0 0 20px rgba(56, 189, 248, 0.2);
+    color: #fff;
+}
+
+
+/* Click effect */
+
+.btn:active {
+    transform: scale(0.96);
 }
 
 
@@ -653,14 +691,13 @@
 .btn::before {
     content: "";
     position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient( 135deg, rgba(56, 189, 248, 0.5), rgba(139, 92, 246, 0.3), rgba(56, 189, 248, 0.2));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    opacity: 0.5;
-    transition: opacity 0.6s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 60%);
+    transition: width 0.4s ease, height 0.4s ease;
 }
 
 
@@ -715,4 +752,41 @@
 
 .btn:hover::after {
     opacity: 1;
+}
+
+.tech-stack {
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.hero-stats div {
+    text-align: center;
+}
+
+.hero-stats h3 {
+    color: #38bdf8;
+    font-size: 18px;
+}
+
+.hero-stats p {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+a.btn {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+a.btn:hover,
+a.btn:focus,
+a.btn:active {
+    text-decoration: none !important;
 }

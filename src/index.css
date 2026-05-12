@@ -179,3 +179,58 @@ body {
     /* Stops horizontal scrolling */
     position: relative;
 }
+
+section {
+    padding: 80px 20px;
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+body {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+.card:hover,
+.project-card:hover,
+.why-card:hover,
+.github-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+    h2 {
+        font-size: 26px;
+    }
+    .hero {
+        text-align: center;
+    }
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
